@@ -13,9 +13,9 @@ export const ready2DriveCaseStudy: CaseStudy = {
   quickSummary:
     "Ready2Drive PEI launched an online theory course, but the old website still felt like it only had one service. I redesigned and built the site so people can understand the two paths quickly, feel confident, and take action without second-guessing.",
   heroPreview: {
-    src: "/case-studies/ready2drive/image8.png",
-    alt: "Final redesigned Ready2Drive homepage.",
-    caption: "Final homepage preview: clearer pathing, stronger hierarchy, and conversion-ready structure.",
+    src: "/case-studies/ready2drive/after.png",
+    alt: "Updated after screenshot for the redesigned Ready2Drive experience.",
+    caption: "After snapshot: clearer structure, stronger action hierarchy, and better scan flow.",
     group: "hero-preview",
     layoutType: "long",
   },

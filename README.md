@@ -34,3 +34,18 @@ Open `http://localhost:3000` to view the site.
 npm run lint
 npm run build
 ```
+
+## Deploy on Vercel
+
+This project is preconfigured for Vercel with [`vercel.json`](./vercel.json).
+
+1. Push this folder to a Git repository (GitHub/GitLab/Bitbucket).
+2. In Vercel, click **Add New... -> Project** and import the repo.
+3. Use the default settings:
+   - Framework: Next.js
+   - Install Command: `npm ci`
+   - Build Command: `npm run build`
+   - Output Directory: `.next` (auto)
+4. Click **Deploy**.
+
+No environment variables are required for this project right now.

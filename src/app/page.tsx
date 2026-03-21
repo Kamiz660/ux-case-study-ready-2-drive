@@ -419,24 +419,31 @@ export default function Home() {
             <ScrollReveal delayMs={18}>
               <section
                 id={reflection.id}
-                className="scroll-mt-32 rounded-[1.75rem] bg-gradient-to-br from-slate-200 via-blue-100 to-sky-100 px-6 py-7 shadow-[0_18px_44px_-34px_rgba(51,65,85,0.35)] sm:px-7 lg:px-8"
+                className="scroll-mt-32 rounded-[1.9rem] border border-blue-300/35 bg-gradient-to-br from-[#102b6f] via-[#163d97] to-[#1b4db6] px-6 py-8 text-white shadow-[0_20px_58px_-30px_rgba(17,55,148,0.85)] sm:px-7 lg:px-8"
               >
-                <div className="grid gap-7 lg:grid-cols-[1.02fr_0.98fr]">
-                  <article>
-                    <div className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-3 py-1 text-sm font-medium text-slate-100 ring-1 ring-slate-500/70">
-                      <Flame className="size-4" />
-                      {reflection.label}
-                    </div>
-                    <h2 className="mt-4 text-3xl leading-tight text-slate-900">{reflection.summary}</h2>
-                    <KeyLines points={reflection.keyPoints} />
-                  </article>
-                  <div className="rounded-2xl bg-sky-100/85 p-5 ring-1 ring-blue-700/25">
-                    <h3 className="text-2xl leading-tight text-slate-900">Process detail</h3>
-                    <p className="mt-2 text-base leading-relaxed text-slate-800">Additional implementation notes</p>
-                    <div className="mt-4">
-                      <SectionDetails sectionId={reflection.id} details={reflection.deepDive} />
-                    </div>
+                <div className="max-w-5xl">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-1 text-sm font-medium text-blue-100 ring-1 ring-white/20">
+                    <Flame className="size-4" />
+                    Closing Reflection
                   </div>
+                  <h2 className="mt-4 text-4xl leading-tight">{reflection.label}</h2>
+                  <p className="mt-3 text-lg leading-relaxed text-blue-100">{reflection.summary}</p>
+                  <KeyLines points={reflection.keyPoints} tone="dark" />
+                </div>
+
+                <div className="mt-7 grid gap-4 md:grid-cols-2">
+                  <article className="rounded-2xl border border-white/20 bg-white/10 p-5">
+                    <h3 className="text-lg font-semibold text-white">What this project proved</h3>
+                    <p className="mt-2 text-base leading-relaxed text-blue-100">
+                      Better structure and clearer action flow can change how quickly users understand a service.
+                    </p>
+                  </article>
+                  <article className="rounded-2xl border border-white/20 bg-white/10 p-5">
+                    <h3 className="text-lg font-semibold text-white">What comes next</h3>
+                    <p className="mt-2 text-base leading-relaxed text-blue-100">
+                      Validate expected impact with live traffic data and refine copy where users still hesitate.
+                    </p>
+                  </article>
                 </div>
               </section>
             </ScrollReveal>

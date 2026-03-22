@@ -70,7 +70,7 @@ export function FigureGallery({
 
   return (
     <>
-      <div className={cn(useGridLayout ? "grid gap-4 md:grid-cols-2" : "space-y-4", className)}>
+      <div className={cn(useGridLayout ? "grid gap-3 md:grid-cols-2" : "space-y-3 sm:space-y-4", className)}>
         {figures.map((figure, index) => (
           <figure
             key={`${figure.src}-${index}`}
@@ -82,7 +82,7 @@ export function FigureGallery({
             {captionPosition === "top" ? (
               <figcaption
                 className={cn(
-                  "px-4 pt-3 pb-2 leading-relaxed text-slate-900",
+                  "px-3 pt-2.5 pb-2 leading-relaxed text-slate-900 sm:px-4 sm:pt-3",
                   emphasizeCaption ? "text-base font-semibold" : "text-sm"
                 )}
               >
@@ -110,7 +110,7 @@ export function FigureGallery({
               ) : null}
             </button>
             {captionPosition === "bottom" ? (
-              <figcaption className="px-3 py-2.5 text-sm leading-relaxed text-slate-700">
+              <figcaption className="px-3 py-2 text-sm leading-relaxed text-slate-700 sm:py-2.5">
                 {figure.caption}
               </figcaption>
             ) : null}

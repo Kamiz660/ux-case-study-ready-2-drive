@@ -130,19 +130,19 @@ export default function Home() {
   const reflection = mustGetSection("reflection");
 
   return (
-    <div className="page-glow relative flex flex-1 overflow-x-clip">
-      <main className="relative mx-auto w-full max-w-[1600px] px-6 pb-14 pt-8 sm:px-8 lg:px-12">
-        <div className="grid gap-9 lg:grid-cols-[minmax(0,1fr)_18.5rem] lg:items-start">
-          <div>
+    <div className="page-glow relative flex flex-1 overflow-x-hidden">
+      <main className="relative mx-auto w-full max-w-[1600px] px-4 pb-12 pt-6 sm:px-8 sm:pb-14 sm:pt-8 lg:px-12">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18.5rem] lg:items-start lg:gap-9">
+          <div className="min-w-0">
             <ScrollReveal>
           <section
             id="overview"
-            className="relative overflow-hidden rounded-[1.5rem] border border-blue-500/45 bg-gradient-to-br from-blue-200 via-sky-100 to-blue-50 px-6 py-6 shadow-[0_20px_70px_-34px_rgba(31,68,173,0.5)] sm:px-7 sm:py-7 lg:px-9 lg:py-8"
+            className="relative overflow-visible rounded-[1.2rem] border border-blue-500/45 bg-gradient-to-br from-blue-200 via-sky-100 to-blue-50 px-4 py-5 shadow-[0_20px_70px_-34px_rgba(31,68,173,0.5)] sm:overflow-hidden sm:rounded-[1.5rem] sm:px-7 sm:py-7 lg:px-9 lg:py-8"
           >
             <svg
               aria-hidden
               viewBox="0 0 620 300"
-              className="pointer-events-none absolute -right-30 top-6 h-[13rem] w-[30rem] text-blue-700/20 lg:h-[15rem] lg:w-[34rem]"
+              className="pointer-events-none absolute -right-30 top-6 hidden h-[13rem] w-[30rem] text-blue-700/20 sm:block lg:h-[15rem] lg:w-[34rem]"
             >
               <path
                 d="M24 248C118 132 212 52 336 72C420 86 496 152 612 74"
@@ -155,7 +155,7 @@ export default function Home() {
               <circle cx="456" cy="148" r="8" fill="currentColor" />
             </svg>
 
-            <div className="relative max-w-[70rem] lg:ml-3">
+            <div className="relative min-w-0 max-w-[70rem] lg:ml-3">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge className="border-blue-700/40 bg-blue-700/12 px-2.5 text-blue-950 shadow-[0_6px_16px_-12px_rgba(29,78,216,0.8)]" variant="outline">
                   UX Case Study
@@ -171,8 +171,8 @@ export default function Home() {
                 </Badge>
               </div>
 
-              <div className="mt-4 flex flex-wrap items-end gap-3">
-                <h1 className="text-3xl leading-tight text-slate-900 sm:text-4xl lg:text-[3rem]">
+              <div className="mt-4 flex flex-col items-start gap-2.5 sm:flex-row sm:flex-wrap sm:items-end sm:gap-3">
+                <h1 className="text-[2.15rem] leading-tight text-slate-900 sm:text-4xl lg:text-[3rem]">
                   {ready2DriveCaseStudy.title}
                 </h1>
                 <a
@@ -186,22 +186,22 @@ export default function Home() {
                 </a>
               </div>
 
-              <p className="mt-3 max-w-3xl text-[15px] leading-6 text-slate-900/95">
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-900/95 sm:text-[15px]">
                 <span className="font-semibold text-slate-950">{ready2DriveCaseStudy.subtitle}. </span>
                 {ready2DriveCaseStudy.quickSummary}
               </p>
 
               <h2 className="mt-5 text-base font-semibold tracking-[0.08em] text-blue-900 uppercase">Overview</h2>
-              <div className="mt-2.5 grid gap-3 sm:grid-cols-2">
-                <article className="rounded-xl bg-white p-4 ring-1 ring-blue-700/45 shadow-[0_12px_28px_-20px_rgba(29,78,216,0.85)] transition-transform duration-200 hover:-translate-y-0.5">
+              <div className="mt-2.5 grid gap-3 md:grid-cols-2">
+                <article className="min-w-0 rounded-xl bg-white p-4 ring-1 ring-blue-700/45 shadow-[0_12px_28px_-20px_rgba(29,78,216,0.85)] transition-transform duration-200 hover:-translate-y-0.5">
                   <h2 className="text-lg font-semibold text-blue-950">Problem</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-900">
+                  <p className="mt-2 break-words text-sm leading-relaxed text-slate-900">
                     {ready2DriveCaseStudy.outcomeSnapshot.challenge}
                   </p>
                 </article>
-                <article className="rounded-xl bg-white p-4 ring-1 ring-blue-700/45 shadow-[0_12px_28px_-20px_rgba(29,78,216,0.85)] transition-transform duration-200 hover:-translate-y-0.5">
+                <article className="min-w-0 rounded-xl bg-white p-4 ring-1 ring-blue-700/45 shadow-[0_12px_28px_-20px_rgba(29,78,216,0.85)] transition-transform duration-200 hover:-translate-y-0.5">
                   <h2 className="text-lg font-semibold text-blue-950">What Was Redesigned</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-900">
+                  <p className="mt-2 break-words text-sm leading-relaxed text-slate-900">
                     {ready2DriveCaseStudy.outcomeSnapshot.solutionDirection}
                   </p>
                 </article>
@@ -212,11 +212,11 @@ export default function Home() {
                 {ready2DriveCaseStudy.outcomeCards.map((card, index) => (
                   <article
                     key={card.title}
-                    className={`rounded-xl p-4 ring-1 ${outcomeCardThemes[index] ?? outcomeCardThemes[0]} shadow-[0_8px_24px_-18px_rgba(30,64,175,0.55)]`}
+                    className={`min-w-0 rounded-xl p-4 ring-1 ${outcomeCardThemes[index] ?? outcomeCardThemes[0]} shadow-[0_8px_24px_-18px_rgba(30,64,175,0.55)]`}
                   >
                     <h2 className="text-lg font-semibold leading-tight text-slate-950">{card.title}</h2>
                     <p className="mt-2 text-sm font-medium leading-relaxed text-blue-950">{card.value}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-900">{card.note}</p>
+                    <p className="mt-2 break-words text-sm leading-relaxed text-slate-900">{card.note}</p>
                   </article>
                 ))}
               </div>
@@ -226,19 +226,19 @@ export default function Home() {
 
             <SectionNav mode="mobile" sections={toc} />
 
-            <div className="mt-8">
-              <div className="space-y-16">
+            <div className="mt-7 sm:mt-8">
+              <div className="space-y-12 sm:space-y-16">
             <ScrollReveal delayMs={4}>
               <section
                 id={problem.id}
-                className="scroll-mt-32 rounded-[1.3rem] bg-gradient-to-br from-sky-200 via-blue-100 to-indigo-100 px-6 py-7 shadow-[0_20px_50px_-38px_rgba(37,99,235,0.45)] sm:px-7 lg:px-8"
+                className="scroll-mt-32 rounded-[1.15rem] bg-gradient-to-br from-sky-200 via-blue-100 to-indigo-100 px-4 py-5 shadow-[0_20px_50px_-38px_rgba(37,99,235,0.45)] sm:rounded-[1.3rem] sm:px-7 sm:py-7 lg:px-8"
               >
                 <div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-blue-900 px-3 py-1 text-sm font-medium text-blue-100">
                     <Target className="size-4" />
                     {problem.label}
                   </div>
-                  <h2 className="mt-4 text-3xl leading-tight text-slate-900">
+                  <h2 className="mt-4 text-2xl leading-tight text-slate-900 sm:text-3xl">
                     {problem.summary}
                   </h2>
                   <p className="mt-4 text-xs font-semibold tracking-[0.08em] text-blue-900 uppercase">At a glance</p>
@@ -250,7 +250,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-6 sm:mt-8">
                   <p className="mb-3 inline-flex items-center rounded-full bg-slate-800 px-4 py-1.5 text-sm font-semibold tracking-[0.08em] text-slate-100 uppercase">
                     Before
                   </p>
@@ -263,7 +263,7 @@ export default function Home() {
                   ) : null}
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-6 sm:mt-8">
                   <p className="mb-3 inline-flex items-center rounded-full bg-blue-700 px-4 py-1.5 text-sm font-semibold tracking-[0.08em] text-blue-50 uppercase">
                     After
                   </p>
@@ -277,8 +277,8 @@ export default function Home() {
             </ScrollReveal>
 
             <ScrollReveal delayMs={6}>
-              <section className="rounded-[1.3rem] border border-blue-500/35 bg-gradient-to-r from-blue-200/75 via-sky-100/70 to-indigo-100/75 px-6 py-6 sm:px-7 lg:px-8">
-                <h2 className="text-2xl leading-tight text-slate-900">UX Study Process</h2>
+              <section className="rounded-[1.15rem] border border-blue-500/35 bg-gradient-to-r from-blue-200/75 via-sky-100/70 to-indigo-100/75 px-4 py-5 sm:rounded-[1.3rem] sm:px-7 sm:py-6 lg:px-8">
+                <h2 className="text-xl leading-tight text-slate-900 sm:text-2xl">UX Study Process</h2>
                 <div className="mt-4 grid gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] md:items-center">
                   <article className="rounded-xl bg-blue-100/95 p-3 text-center ring-1 ring-blue-700/30">
                     <p className="text-sm tracking-[0.08em] text-indigo-700 uppercase">Step 1</p>
@@ -311,13 +311,13 @@ export default function Home() {
             <ScrollReveal delayMs={8}>
               <section
                 id={audit.id}
-                className="scroll-mt-32 rounded-[1.3rem] bg-gradient-to-r from-[#0b1733] via-[#132951] to-[#1e3a74] px-6 py-7 text-slate-100 shadow-[0_20px_58px_-38px_rgba(16,42,123,0.85)] sm:px-7 lg:px-8"
+                className="scroll-mt-32 rounded-[1.15rem] bg-gradient-to-r from-[#0b1733] via-[#132951] to-[#1e3a74] px-4 py-5 text-slate-100 shadow-[0_20px_58px_-38px_rgba(16,42,123,0.85)] sm:rounded-[1.3rem] sm:px-7 sm:py-7 lg:px-8"
               >
                 <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm text-sky-200">
                   <Compass className="size-4" />
                   {audit.label}
                 </div>
-                <h2 className="mt-4 text-3xl leading-tight">{audit.summary}</h2>
+                <h2 className="mt-4 text-2xl leading-tight sm:text-3xl">{audit.summary}</h2>
 
                 <div className="mt-6 grid gap-4 lg:grid-cols-2">
                   <article className="rounded-xl border border-white/25 bg-white/10 p-4">
@@ -351,7 +351,7 @@ export default function Home() {
                   <h3 className="text-sm font-semibold tracking-[0.1em] text-sky-100 uppercase">
                     User impact
                   </h3>
-                  <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  <div className="mt-3 grid gap-2 md:grid-cols-2">
                     {[
                       "Harder to scan.",
                       "Users had to work to find key information.",
@@ -379,14 +379,14 @@ export default function Home() {
             <ScrollReveal delayMs={10}>
               <section
                 id={competitor.id}
-                className="scroll-mt-32 rounded-[1.3rem] bg-gradient-to-br from-blue-200 via-sky-100 to-indigo-100 px-6 py-7 shadow-[0_18px_46px_-34px_rgba(37,99,235,0.45)] sm:px-7 lg:px-8"
+                className="scroll-mt-32 rounded-[1.15rem] bg-gradient-to-br from-blue-200 via-sky-100 to-indigo-100 px-4 py-5 shadow-[0_18px_46px_-34px_rgba(37,99,235,0.45)] sm:rounded-[1.3rem] sm:px-7 sm:py-7 lg:px-8"
               >
                 <div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-blue-900 px-3 py-1 text-sm font-medium text-blue-100 ring-1 ring-blue-400/60">
                     <ArrowRightLeft className="size-4" />
                     {competitor.label}
                   </div>
-                  <h2 className="mt-4 text-3xl leading-tight text-slate-900">{competitor.summary}</h2>
+                  <h2 className="mt-4 text-2xl leading-tight text-slate-900 sm:text-3xl">{competitor.summary}</h2>
                   <p className="mt-4 text-sm font-semibold tracking-[0.08em] text-blue-900 uppercase">At a glance</p>
                   <KeyLines points={competitor.keyPoints} />
                   <div className="mt-5">
@@ -406,12 +406,12 @@ export default function Home() {
 
             <ScrollReveal delayMs={12}>
               <section id={strategy.id} className="scroll-mt-32">
-                <div className="rounded-[1.3rem] bg-gradient-to-br from-blue-200 via-sky-100 to-indigo-100 px-6 py-7 sm:px-7 lg:px-8">
+                <div className="rounded-[1.15rem] bg-gradient-to-br from-blue-200 via-sky-100 to-indigo-100 px-4 py-5 sm:rounded-[1.3rem] sm:px-7 sm:py-7 lg:px-8">
                   <div className="inline-flex items-center gap-2 rounded-full bg-blue-900 px-3 py-1 text-sm font-medium text-blue-100 ring-1 ring-blue-400/65">
                     <Sparkles className="size-4" />
                     {strategy.label}
                   </div>
-                  <h2 className="mt-4 text-3xl leading-tight text-slate-900">{strategy.summary}</h2>
+                  <h2 className="mt-4 text-2xl leading-tight text-slate-900 sm:text-3xl">{strategy.summary}</h2>
                   <p className="mt-4 text-sm font-semibold tracking-[0.08em] text-blue-900 uppercase">Key decisions</p>
                   <div className="mt-5 grid gap-3 md:grid-cols-3">
                     {strategy.keyPoints.map((point) => (
@@ -429,11 +429,11 @@ export default function Home() {
                   {strategy.figures?.map((figure, index) => (
                     <article
                       key={figure.src}
-                      className="rounded-xl border border-blue-700/25 bg-gradient-to-br from-sky-50/90 via-blue-50/90 to-indigo-50/90 p-4 shadow-[0_14px_36px_-26px_rgba(37,99,235,0.5)] sm:p-5"
+                      className="rounded-xl border border-blue-700/25 bg-gradient-to-br from-sky-50/90 via-blue-50/90 to-indigo-50/90 p-3.5 shadow-[0_14px_36px_-26px_rgba(37,99,235,0.5)] sm:p-5"
                     >
                       <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
                         <div>
-                          <h3 className="text-2xl leading-tight text-slate-900">{figure.caption}</h3>
+                          <h3 className="text-xl leading-tight text-slate-900 sm:text-2xl">{figure.caption}</h3>
                           <p className="mt-3 text-base leading-relaxed text-slate-800">
                             <span className="font-semibold">Why this change:</span>{" "}
                             {decisionEvidenceDetails[index]?.reason}
@@ -461,11 +461,11 @@ export default function Home() {
             <ScrollReveal delayMs={14}>
               <section
                 id={finalScreens.id}
-                className="scroll-mt-32 rounded-[1.4rem] border border-blue-300/40 bg-gradient-to-br from-[#0a2f9f] via-[#1d4ed8] to-[#0f2f8a] px-6 py-8 text-white shadow-[0_20px_58px_-30px_rgba(30,64,175,0.9)] sm:px-7 lg:px-8"
+                className="scroll-mt-32 rounded-[1.2rem] border border-blue-300/40 bg-gradient-to-br from-[#0a2f9f] via-[#1d4ed8] to-[#0f2f8a] px-4 py-6 text-white shadow-[0_20px_58px_-30px_rgba(30,64,175,0.9)] sm:rounded-[1.4rem] sm:px-7 sm:py-8 lg:px-8"
               >
                 <div className="max-w-4xl">
-                  <h2 className="text-4xl leading-tight">{finalScreens.label}</h2>
-                  <p className="mt-3 text-lg leading-relaxed text-blue-100">{finalScreens.summary}</p>
+                  <h2 className="text-3xl leading-tight sm:text-4xl">{finalScreens.label}</h2>
+                  <p className="mt-3 text-base leading-relaxed text-blue-100 sm:text-lg">{finalScreens.summary}</p>
                 </div>
                 <p className="mt-4 text-sm font-semibold tracking-[0.08em] text-blue-100 uppercase">What changed</p>
                 <KeyLines points={finalScreens.keyPoints} tone="dark" />
@@ -485,14 +485,14 @@ export default function Home() {
             <ScrollReveal delayMs={16}>
               <section
                 id={expectedImpact.id}
-                className="scroll-mt-32 rounded-[1.3rem] border border-blue-400/45 bg-gradient-to-r from-sky-100 via-blue-100 to-indigo-100 px-6 py-7 shadow-[0_20px_48px_-34px_rgba(37,99,235,0.48)] sm:px-7 lg:px-8"
+                className="scroll-mt-32 rounded-[1.15rem] border border-blue-400/45 bg-gradient-to-r from-sky-100 via-blue-100 to-indigo-100 px-4 py-5 shadow-[0_20px_48px_-34px_rgba(37,99,235,0.48)] sm:rounded-[1.3rem] sm:px-7 sm:py-7 lg:px-8"
               >
                 <div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-blue-900 px-3 py-1 text-sm font-medium text-blue-100 ring-1 ring-blue-500/75">
                     <Target className="size-4" />
                     {expectedImpact.label}
                   </div>
-                  <h2 className="mt-4 text-3xl leading-tight text-slate-900">{expectedImpact.summary}</h2>
+                  <h2 className="mt-4 text-2xl leading-tight text-slate-900 sm:text-3xl">{expectedImpact.summary}</h2>
                 </div>
 
                 <div className="mt-6 grid gap-6 lg:grid-cols-2 lg:items-start">
@@ -527,15 +527,15 @@ export default function Home() {
             <ScrollReveal delayMs={18}>
               <section
                 id={reflection.id}
-                className="scroll-mt-32 rounded-[1.4rem] border border-blue-300/35 bg-gradient-to-br from-[#102b6f] via-[#163d97] to-[#1b4db6] px-6 py-8 text-white shadow-[0_20px_58px_-30px_rgba(17,55,148,0.85)] sm:px-7 lg:px-8"
+                className="scroll-mt-32 rounded-[1.2rem] border border-blue-300/35 bg-gradient-to-br from-[#102b6f] via-[#163d97] to-[#1b4db6] px-4 py-6 text-white shadow-[0_20px_58px_-30px_rgba(17,55,148,0.85)] sm:rounded-[1.4rem] sm:px-7 sm:py-8 lg:px-8"
               >
                 <div className="max-w-5xl">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-1 text-sm font-medium text-blue-100 ring-1 ring-white/20">
                     <Flame className="size-4" />
                     Closing Reflection
                   </div>
-                  <h2 className="mt-4 text-4xl leading-tight">{reflection.label}</h2>
-                  <p className="mt-3 text-lg leading-relaxed text-blue-100">{reflection.summary}</p>
+                  <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{reflection.label}</h2>
+                  <p className="mt-3 text-base leading-relaxed text-blue-100 sm:text-lg">{reflection.summary}</p>
                   <p className="mt-4 text-sm font-semibold tracking-[0.08em] text-blue-100 uppercase">Key takeaways</p>
                   <KeyLines points={reflection.keyPoints} tone="dark" />
                 </div>

@@ -106,7 +106,8 @@ export function SectionNav({ sections, mode = "mobile" }: SectionNavProps) {
       className={cn(
         "rounded-xl border backdrop-blur transition-colors duration-300 motion-reduce:transition-none",
         navToneClass,
-        mode === "mobile" && "sticky top-3 z-30 mt-6 px-3 py-3 lg:hidden",
+        mode === "mobile" &&
+          "sticky top-[calc(env(safe-area-inset-top)+0.5rem)] z-30 mt-5 px-2.5 py-2.5 shadow-[0_10px_24px_-18px_rgba(15,23,42,0.55)] lg:hidden",
         mode === "rail" && "hidden lg:block lg:mt-2 lg:px-4 lg:py-4"
       )}
     >
@@ -126,7 +127,14 @@ export function SectionNav({ sections, mode = "mobile" }: SectionNavProps) {
         />
       </div>
 
-      <div className={cn("mt-3 gap-2.5", mode === "mobile" ? "flex overflow-x-auto pb-1" : "grid")}>
+      <div
+        className={cn(
+          "mt-3 gap-2.5",
+          mode === "mobile"
+            ? "flex snap-x snap-mandatory overflow-x-auto pb-1 [scrollbar-width:none] [-ms-overflow-style:none]"
+            : "grid"
+        )}
+      >
         {sections.map((section, index) => (
           <a
             key={section.id}
@@ -134,7 +142,7 @@ export function SectionNav({ sections, mode = "mobile" }: SectionNavProps) {
             className={cn(
               "inline-flex shrink-0 items-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               linkToneClass,
-              mode === "mobile" && "rounded-full text-sm",
+              mode === "mobile" && "snap-start rounded-full px-3 py-2 text-xs sm:text-sm",
               mode === "rail" && "px-3 py-2.5",
               section.id === activeId && activeLinkToneClass
             )}
@@ -142,6 +150,7 @@ export function SectionNav({ sections, mode = "mobile" }: SectionNavProps) {
             <span
               className={cn(
                 "text-sm font-semibold",
+                mode === "mobile" && "hidden sm:inline",
                 section.id === activeId ? "text-blue-900" : indexToneClass
               )}
             >

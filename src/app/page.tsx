@@ -130,7 +130,7 @@ export default function Home() {
   const reflection = mustGetSection("reflection");
 
   return (
-    <div className="page-glow relative flex flex-1 overflow-x-hidden">
+    <div className="page-glow relative flex flex-1 overflow-x-hidden lg:overflow-visible">
       <main className="relative mx-auto w-full max-w-[1600px] px-4 pb-12 pt-6 sm:px-8 sm:pb-14 sm:pt-8 lg:px-12">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18.5rem] lg:items-start lg:gap-9">
           <div className="min-w-0">
@@ -246,7 +246,11 @@ export default function Home() {
                     <KeyLines points={problem.keyPoints} mode="grouped" />
                   </div>
                   <div className="mt-5">
-                    <SectionDetails sectionId={problem.id} details={problem.deepDive} />
+                    <SectionDetails
+                      sectionId={problem.id}
+                      details={problem.deepDive}
+                      panelTitle="Why this mattered"
+                    />
                   </div>
                 </div>
 
@@ -390,7 +394,11 @@ export default function Home() {
                   <p className="mt-4 text-sm font-semibold tracking-[0.08em] text-blue-900 uppercase">At a glance</p>
                   <KeyLines points={competitor.keyPoints} />
                   <div className="mt-5">
-                    <SectionDetails sectionId={competitor.id} details={competitor.deepDive} />
+                    <SectionDetails
+                      sectionId={competitor.id}
+                      details={competitor.deepDive}
+                      panelTitle="Competitive benchmark summary"
+                    />
                   </div>
                 </div>
 
@@ -421,7 +429,11 @@ export default function Home() {
                     ))}
                   </div>
                   <div className="mt-5">
-                    <SectionDetails sectionId={strategy.id} details={strategy.deepDive} />
+                    <SectionDetails
+                      sectionId={strategy.id}
+                      details={strategy.deepDive}
+                      panelTitle="Narrative principles"
+                    />
                   </div>
                 </div>
 
@@ -519,6 +531,9 @@ export default function Home() {
                     details={expectedImpact.deepDive}
                     panelTitle="Validation plan"
                     minItemsToShow={1}
+                    closedLabel="Metrics"
+                    openLabel="Hide metrics"
+                    emphasizeTrigger
                   />
                 </div>
               </section>

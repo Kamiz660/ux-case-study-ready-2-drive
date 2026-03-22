@@ -108,7 +108,7 @@ export function SectionNav({ sections, mode = "mobile" }: SectionNavProps) {
         navToneClass,
         mode === "mobile" &&
           "sticky top-[calc(env(safe-area-inset-top)+0.5rem)] z-30 mt-5 px-2.5 py-2.5 shadow-[0_10px_24px_-18px_rgba(15,23,42,0.55)] lg:hidden",
-        mode === "rail" && "hidden lg:block lg:mt-2 lg:px-4 lg:py-4"
+        mode === "rail" && "hidden lg:mt-2 lg:block lg:px-4 lg:py-4"
       )}
     >
       <div className="flex items-center justify-between text-sm tracking-[0.1em] uppercase">

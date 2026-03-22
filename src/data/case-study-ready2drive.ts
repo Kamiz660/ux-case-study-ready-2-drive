@@ -5,7 +5,7 @@ export const ready2DriveCaseStudy: CaseStudy = {
   title: "Ready2Drive PEI",
   subtitle: "Redesigned to make lesson choices clearer and the next step easier",
   meta: {
-    role: "Fullstack Developer",
+    role: "UX Designer & Developer",
     timeline: "1 week",
     platform: "Ready2Drive PEI",
     projectType: "UX Case Study",
@@ -45,7 +45,7 @@ export const ready2DriveCaseStudy: CaseStudy = {
   ],
   outcomeSnapshot: {
     challenge:
-      "The original site had only minimal content, which made the offer feel limited and it was not organized in a way that made the offer easy to scan, compare, or act on. Weak hierarchy, vague navigation, and unclear action paths reduced clarity and confidence. The redesign also needed to accommodate a new online course, expanding the site beyond its original structure.",
+      "The original site had only minimal content, which made the offer feel limited and it was not organized in a way that made the offer easy to scan, compare, or act on. Weak hierarchy, vague navigation, and unclear action paths reduced clarity and confidence. The redesign also needed to accommodate a new online course. This expanded the site beyond its original structure.",
     solutionDirection:
       "I restructured the site around clearer user intent, improved labeling and CTA clarity, separated lesson and course paths, and organized key details so visitors could compare options and take action more easily and place supporting details closer to the moments where users make decisions.",
     deliverables:
@@ -61,9 +61,9 @@ export const ready2DriveCaseStudy: CaseStudy = {
       summary:
         "The original homepage relied on vague labels to communicate key information, which weakened clarity and confidence.",
       keyPoints: [
-        "Navigation used labels like “More Info,” which gave users little sense of what they would actually find after clicking.",
+        "Navigation used labels like \"More Info,\" which gave users little sense of what they would actually find after clicking.",
         "The primary message was present, but weak hierarchy reduced its visibility and impact.",
-        "The main CTA did not stand out, and its wording gave too no confidence or clarity about what users would get next.",
+        "The main CTA did not stand out, and its wording gave little confidence or clarity about what users would get next.",
       ],
       deepDive: [
         "On first visit, users had to figure out whether the site was for offline lessons, online theory, or both.",
@@ -97,7 +97,7 @@ export const ready2DriveCaseStudy: CaseStudy = {
       keyPoints: [
         "Main messages did not stand out enough from the rest of the page.",
         "Important actions were visible, but they were easy to miss.",
-        "Too many sections looked similar, so people could not tell what mattered first.",
+        "Lack of visual variance caused cognitive load, making it difficult for users to prioritize information.",
       ],
       deepDive: [
         "Method: heuristic review, core journey walkthrough, and mobile/desktop checks.",
@@ -224,9 +224,9 @@ export const ready2DriveCaseStudy: CaseStudy = {
         "Both lesson booking and online course paths should feel easier to complete.",
       ],
       deepDive: [
-        "Planned metrics\n• inquiry completion rate\n• booking progression\n• course-page click-through",
-        "Secondary metric\n• time to first meaningful action from landing.",
-        "Validation method\n• compare post-redesign behavior against baseline data.",
+        "Planned metrics\n- inquiry completion rate\n- booking progression\n- course-page click-through",
+        "Secondary metric\n- time to first meaningful action from landing.",
+        "Validation method\n- compare post-redesign behavior against baseline data.",
       ],
     },
     {

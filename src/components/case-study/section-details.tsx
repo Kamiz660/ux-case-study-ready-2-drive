@@ -16,6 +16,9 @@ type SectionDetailsProps = {
   tone?: "light" | "dark";
   panelTitle?: string;
   minItemsToShow?: number;
+  closedLabel?: string;
+  openLabel?: string;
+  emphasizeTrigger?: boolean;
 };
 
 export function SectionDetails({
@@ -24,6 +27,9 @@ export function SectionDetails({
   tone = "light",
   panelTitle = "Notes",
   minItemsToShow = 3,
+  closedLabel = "Open details",
+  openLabel = "Hide details",
+  emphasizeTrigger = false,
 }: SectionDetailsProps) {
   const safeDetails = details ?? [];
 
@@ -40,8 +46,9 @@ export function SectionDetails({
 
     if (lines.length > 1) {
       const [title, ...rest] = lines;
-      const bullets = rest.filter((line) => line.startsWith("•") || line.startsWith("-"));
-      const bodyLines = rest.filter((line) => !line.startsWith("•") && !line.startsWith("-"));
+      const bulletPattern = /^(?:-|\u2022)\s*/;
+      const bullets = rest.filter((line) => bulletPattern.test(line));
+      const bodyLines = rest.filter((line) => !bulletPattern.test(line));
 
       return (
         <div>
@@ -56,7 +63,7 @@ export function SectionDetails({
           {bullets.length > 0 ? (
             <ul className="mt-2 space-y-1.5">
               {bullets.map((line) => {
-                const text = line.replace(/^[•-]\s*/, "");
+                const text = line.replace(bulletPattern, "");
                 return (
                   <li key={line} className="flex items-start gap-2.5">
                     <span className="mt-2 size-2 shrink-0 rounded-full bg-blue-700" />
@@ -92,6 +99,8 @@ export function SectionDetails({
         onClick={() => setIsOpen((current) => !current)}
         className={cn(
           "w-full justify-between sm:w-auto",
+          emphasizeTrigger &&
+            "border-blue-700/65 bg-blue-700/90 text-white shadow-[0_10px_20px_-16px_rgba(29,78,216,0.9)] hover:bg-blue-800",
           tone === "dark"
             ? "border-sky-100/65 bg-sky-100/15 text-sky-50 hover:bg-sky-100/25"
             : "border-blue-700/35 bg-blue-600/10 text-blue-900 hover:bg-blue-600/20"
@@ -99,7 +108,7 @@ export function SectionDetails({
       >
         <span className="inline-flex items-center gap-2">
           <CircleHelp className="size-4" aria-hidden />
-          {isOpen ? "Hide details" : "Open details"}
+          {isOpen ? openLabel : closedLabel}
         </span>
         <ChevronDown
           aria-hidden
@@ -128,14 +137,14 @@ export function SectionDetails({
         </div>
         <div className="rounded-xl border border-blue-600/20 bg-white/55 px-3.5 py-3">
           <div className="space-y-2.5 text-sm leading-6 text-foreground/90">
-          {safeDetails.map((item, index) => (
-            <div key={item} className="flex items-start gap-2.5">
-              <span className="inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-700 text-[11px] font-semibold text-white">
-                {index + 1}
-              </span>
-              <div>{formatDetail(item)}</div>
-            </div>
-          ))}
+            {safeDetails.map((item, index) => (
+              <div key={item} className="flex items-start gap-2.5">
+                <span className="inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-700 text-[11px] font-semibold text-white">
+                  {index + 1}
+                </span>
+                <div>{formatDetail(item)}</div>
+              </div>
+            ))}
           </div>
         </div>
       </CollapsibleContent>

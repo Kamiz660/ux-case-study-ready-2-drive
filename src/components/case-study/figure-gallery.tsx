@@ -13,9 +13,20 @@ type FigureGalleryProps = {
   sectionLabel: string;
   className?: string;
   forceGrid?: boolean;
+  showEnlargeBadge?: boolean;
+  captionPosition?: "top" | "bottom";
+  emphasizeCaption?: boolean;
 };
 
-export function FigureGallery({ figures, sectionLabel, className, forceGrid = false }: FigureGalleryProps) {
+export function FigureGallery({
+  figures,
+  sectionLabel,
+  className,
+  forceGrid = false,
+  showEnlargeBadge = false,
+  captionPosition = "bottom",
+  emphasizeCaption = false,
+}: FigureGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const hasMultipleFigures = figures.length > 1;
   const hasLongLayout = figures.some((figure) => figure.layoutType === "long");
@@ -68,6 +79,16 @@ export function FigureGallery({ figures, sectionLabel, className, forceGrid = fa
               figure.layoutType === "long" && "mx-auto max-w-5xl"
             )}
           >
+            {captionPosition === "top" ? (
+              <figcaption
+                className={cn(
+                  "px-4 pt-3 pb-2 leading-relaxed text-slate-900",
+                  emphasizeCaption ? "text-base font-semibold" : "text-sm"
+                )}
+              >
+                {figure.caption}
+              </figcaption>
+            ) : null}
             <button
               type="button"
               className="relative block w-full cursor-zoom-in overflow-hidden text-left"
@@ -81,14 +102,18 @@ export function FigureGallery({ figures, sectionLabel, className, forceGrid = fa
                 height={1000}
                 className="h-auto w-full"
               />
-              <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full border border-white/50 bg-black/55 px-2 py-1 text-[11px] font-medium text-white shadow-sm backdrop-blur-sm">
-                <Expand className="size-3" aria-hidden />
-                Enlarge
-              </span>
+              {showEnlargeBadge ? (
+                <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full border border-white/50 bg-black/55 px-2 py-1 text-[11px] font-medium text-white shadow-sm backdrop-blur-sm">
+                  <Expand className="size-3" aria-hidden />
+                  Enlarge
+                </span>
+              ) : null}
             </button>
-            <figcaption className="px-3 py-2.5 text-sm leading-relaxed text-slate-700">
-              {figure.caption}
-            </figcaption>
+            {captionPosition === "bottom" ? (
+              <figcaption className="px-3 py-2.5 text-sm leading-relaxed text-slate-700">
+                {figure.caption}
+              </figcaption>
+            ) : null}
           </figure>
         ))}
       </div>
@@ -102,7 +127,7 @@ export function FigureGallery({ figures, sectionLabel, className, forceGrid = fa
           onClick={closeLightbox}
         >
           <div
-            className="relative w-full max-w-5xl rounded-2xl border border-white/20 bg-slate-950/88 p-3 shadow-2xl animate-in zoom-in-95 duration-200 motion-reduce:animate-none"
+            className="relative w-full max-w-5xl rounded-xl border border-white/20 bg-slate-950/88 p-3 shadow-2xl animate-in zoom-in-95 duration-200 motion-reduce:animate-none"
             onClick={(event) => event.stopPropagation()}
           >
             <Button

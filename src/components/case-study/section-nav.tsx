@@ -64,41 +64,89 @@ export function SectionNav({ sections, mode = "mobile" }: SectionNavProps) {
   );
   const progressPercent =
     sections.length > 0 ? ((activeIndex + 1) / sections.length) * 100 : 0;
+  const tone =
+    activeId === "audit-findings"
+      ? "audit"
+      : activeId === "final-screens"
+        ? "final"
+        : activeId === "reflection"
+          ? "reflection"
+          : "light";
+
+  const navToneClass =
+    tone === "audit"
+      ? "border-blue-900/45 bg-gradient-to-b from-[#345896]/88 via-[#2f528f]/86 to-[#294985]/88 shadow-[0_14px_34px_-22px_rgba(17,38,90,0.62)]"
+      : tone === "final"
+        ? "border-blue-800/48 bg-gradient-to-b from-[#3f71eb]/88 via-[#3565e0]/86 to-[#2f5cd2]/88 shadow-[0_14px_34px_-20px_rgba(33,72,176,0.62)]"
+        : tone === "reflection"
+          ? "border-blue-900/48 bg-gradient-to-b from-[#2f569f]/88 via-[#274a92]/86 to-[#1f3f84]/88 shadow-[0_14px_34px_-20px_rgba(16,44,112,0.64)]"
+          : "border-blue-500/45 bg-gradient-to-b from-blue-200/90 via-sky-200/88 to-blue-100/88 shadow-[0_12px_30px_-22px_rgba(37,99,235,0.65)]";
+
+  const trackToneClass =
+    tone === "light" ? "bg-primary/15" : "bg-white/20";
+  const barToneClass =
+    tone === "audit" ? "bg-sky-200" : tone === "final" ? "bg-blue-100" : tone === "reflection" ? "bg-blue-100" : "bg-primary";
+  const linkToneClass =
+    "border-blue-500/35 bg-white/84 text-slate-900 hover:border-primary/70 hover:bg-white";
+  const activeLinkToneClass =
+    tone === "audit"
+      ? "border-sky-200 bg-sky-200/82 text-blue-950"
+      : tone === "final"
+        ? "border-blue-200 bg-blue-200/85 text-blue-950"
+        : tone === "reflection"
+          ? "border-indigo-200 bg-indigo-200/82 text-blue-950"
+          : "border-primary bg-blue-300/65 text-blue-950";
+  const headingToneClass = tone === "light" ? "text-muted-foreground" : "text-blue-100/90";
+  const counterToneClass = tone === "light" ? "text-foreground" : "text-white";
+  const indexToneClass = "text-blue-800";
 
   return (
     <nav
       aria-label="Case study table of contents"
       className={cn(
-        "rounded-2xl border border-blue-500/45 bg-gradient-to-b from-blue-200/90 via-sky-200/88 to-blue-100/88 shadow-[0_12px_30px_-22px_rgba(37,99,235,0.65)] backdrop-blur",
+        "rounded-xl border backdrop-blur transition-colors duration-300 motion-reduce:transition-none",
+        navToneClass,
         mode === "mobile" && "sticky top-3 z-30 mt-6 px-3 py-3 lg:hidden",
-        mode === "rail" && "hidden lg:block lg:sticky lg:top-6 lg:px-4 lg:py-4"
+        mode === "rail" && "hidden lg:block lg:mt-2 lg:px-4 lg:py-4"
       )}
     >
       <div className="flex items-center justify-between text-sm tracking-[0.1em] uppercase">
-        <span className="text-muted-foreground">Contents</span>
-        <span className="font-semibold text-foreground">
+        <span className={headingToneClass}>Contents</span>
+        <span className={cn("font-semibold", counterToneClass)}>
           {activeIndex + 1}/{sections.length}
         </span>
       </div>
-      <div className="mt-2 h-1 overflow-hidden rounded-full bg-primary/15">
+      <div className={cn("mt-2 h-1 overflow-hidden rounded-full", trackToneClass)}>
         <div
-          className="h-full rounded-full bg-primary transition-[width] duration-300 motion-reduce:transition-none"
+          className={cn(
+            "h-full rounded-full transition-[width,background-color] duration-300 motion-reduce:transition-none",
+            barToneClass
+          )}
           style={{ width: `${progressPercent}%` }}
         />
       </div>
 
-      <div className={cn("mt-3 gap-2", mode === "mobile" ? "flex overflow-x-auto pb-1" : "grid")}>
+      <div className={cn("mt-3 gap-2.5", mode === "mobile" ? "flex overflow-x-auto pb-1" : "grid")}>
         {sections.map((section, index) => (
           <a
             key={section.id}
             href={`#${section.id}`}
             className={cn(
-              "inline-flex shrink-0 items-center gap-2 rounded-xl border border-blue-500/35 bg-white/76 px-3 py-2 text-sm font-medium text-slate-900 transition-colors hover:border-primary/70 hover:bg-blue-200/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              "inline-flex shrink-0 items-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              linkToneClass,
               mode === "mobile" && "rounded-full text-sm",
-              section.id === activeId && "border-primary bg-blue-300/65 text-blue-950"
+              mode === "rail" && "px-3 py-2.5",
+              section.id === activeId && activeLinkToneClass
             )}
           >
-            <span className="text-sm font-semibold text-muted-foreground">{index + 1}</span>
+            <span
+              className={cn(
+                "text-sm font-semibold",
+                section.id === activeId ? "text-blue-900" : indexToneClass
+              )}
+            >
+              {index + 1}
+            </span>
             <span>{section.label}</span>
           </a>
         ))}

@@ -1,51 +1,56 @@
-# Ready2Drive UX Case Study Site
+# Ready2Drive PEI UX Case Study
 
-Single-page interview-focused case study website built with:
+A UX case study website that presents the Ready2Drive PEI redesign with clear storytelling, decision rationale, and before/after evidence.
 
-- Next.js (App Router)
+## Live Site
+
+[https://ux-case-study-ready-2-drive.vercel.app/](https://ux-case-study-ready-2-drive.vercel.app/)
+
+## What This Repo Shows
+
+- Project context and problem framing
+- Audit findings and competitor analysis
+- Strategy and key UI decisions (with visual evidence)
+- Final redesigned screens
+- Expected impact and reflection
+
+## Stack
+
+- Next.js (App Router, TypeScript)
 - Tailwind CSS
-- shadcn/ui
+- shadcn/ui-style components
 
-## Content Source
+## Project Structure
 
-This project uses `../UX Case Study Rewritten.docx` as the canonical visual source.
+- `src/app/page.tsx` - case study page composition
+- `src/data/case-study-ready2drive.ts` - typed case study content
+- `src/components/case-study/*` - navigation, reveal, detail, and gallery components
+- `public/case-studies/ready2drive/*` - case study images
 
-Run the one-time image import script:
-
-```bash
-npm run import:ready2drive-images
-```
-
-This extracts only `word/media/*` assets into:
-
-`public/case-studies/ready2drive`
-
-## Development
+## Local Development
 
 ```bash
+npm install
 npm run dev
 ```
 
-Open `http://localhost:3000` to view the site.
+Open [http://localhost:3000](http://localhost:3000)
 
-## Production Checks
+## Quality Checks
 
 ```bash
 npm run lint
 npm run build
 ```
 
-## Deploy on Vercel
+## Deployment
 
-This project is preconfigured for Vercel with [`vercel.json`](./vercel.json).
+Configured for Vercel using `vercel.json`.
 
-1. Push this folder to a Git repository (GitHub/GitLab/Bitbucket).
-2. In Vercel, click **Add New... -> Project** and import the repo.
-3. Use the default settings:
-   - Framework: Next.js
-   - Install Command: `npm ci`
-   - Build Command: `npm run build`
-   - Output Directory: `.next` (auto)
-4. Click **Deploy**.
+Deploy flow:
 
-No environment variables are required for this project right now.
+1. Push this repo to GitHub/GitLab/Bitbucket
+2. Import into Vercel
+3. Deploy with defaults (`npm ci`, `npm run build`)
+
+
